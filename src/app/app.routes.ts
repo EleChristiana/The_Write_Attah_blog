@@ -12,6 +12,6 @@ export const routes: Routes = [
     },
 
     {
-        path: 'create-post', loadChildren: () => import('./component/dashboard/dashboard.module').then(m=>m.DashboardModule)
+        path: 'dashboard', loadChildren: () => import('./component/dashboard/dashboard.module').then(m=>m.DashboardModule)
     }
 ];

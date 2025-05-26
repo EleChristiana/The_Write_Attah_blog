@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sidebar{
+   
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    color: white;
+     height: 100vh;
+     overflow: auto;
+     gap: 1em;
+     position: fixed;
+     overflow-y: auto;
+      top: 0;
+  left: 0;
+}
+
+li{
+    list-style: none;
+    line-height: 3em;
+    padding-left: 1em;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+
+}
+
+li:hover{
+    background-color: blue;
+}

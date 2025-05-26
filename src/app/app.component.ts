@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './reuseable/header/header.component';
+import { SidebarComponent } from './reuseable/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
