@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { DasboardComponent } from './dasboard/dasboard.component';
 
 const routes: Routes = [
-  {
-    path: 'create-post', component: CreatePostComponent
-  },
-  {
-    path: 'edit-post', component: EditPostComponent
+{
+    path: '',
+    component: DasboardComponent,
+    children: [
+      { path: 'create-post', component: CreatePostComponent },
+      { path: 'edit-post', component: EditPostComponent },
+    
+      { path: '', redirectTo: 'create-post', pathMatch: 'full' }
+    ]
   }
 ];
 
