@@ -1,13 +1,13 @@
 <div class="layout">
 
     <div class="sidebar">
-  <h2 class="logo">The_Write_Attah</h2>
+  <h2 class="logo">DASHBOARD</h2>
   <nav class="nav-links">
-    <a routerLink="/create-post">Create Post</a>
-    <a routerLink="/edit-post">Edit Post</a>
-    <a routerLink="/delete-post">Delete Post</a>
-    <a routerLink="/post-list">Post List</a>
-    <a routerLink="/statistics">Statistics</a>
+    <a class="nav-link" [routerLink]="['/dashboard/create-post']">Create Post</a>
+    <a class="nav-link"  [routerLink]="['/dashboard/edit-post']">Edit Post</a>
+    <a class="nav-link"  [routerLink]="['/dashboard/delete-post']">Delete Post</a>
+    <a class="nav-link"  [routerLink]="['/dashboard/post-list']">Post List</a>
+    <a class="nav-link"  [routerLink]="['/dashboard/statistics']">Statistics</a>
   </nav>
 </div>
 

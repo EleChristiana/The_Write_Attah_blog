@@ -4,11 +4,13 @@
 .layout {
   display: flex;
   flex-direction: row;
+   background-color: #F4F6F9;
 }
 
 .content-area {
-  margin-left: 250px;
+ margin: 1em;
   width: 100%;
+ 
 }
 
 @media (max-width: 768px) {
