@@ -5,6 +5,7 @@ import { Auth, GoogleAuthProvider, signInWithPopup, user, User } from '@angular/
 import { Router } from '@angular/router';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../enviroments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class AuthService {
           console.log('Logged in user UID:', uid);
 
         // Replace with your blog owner's real UID
-        if (uid === 'Dh7ksCivITfijLD9S5gcZcWexx02') {
+        if (uid ===   environment.ownerUid) {
           await this.setOwnerRole(uid);
         } else {
           await this.setUserRoleIfNotExists(uid, 'user');
