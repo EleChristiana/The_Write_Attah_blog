@@ -9,6 +9,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { DeletePostComponent } from './delete-post/delete-post.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,11 @@ import { RouterLink, RouterModule } from '@angular/router';
     DashboardRoutingModule,
     SidebarComponent,
     RouterLink,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+   
+   
+    
 
   ]
 })

@@ -2,20 +2,20 @@
 
 <div class="card d-block justify-content-center align-items-center mx-auto" style="max-width: 1000px;">
   <div class="card-body">
-    <form>
+    <form [formGroup]="createPost" (ngSubmit)="onSubmit()"  >
       <div class="mb-3">
         <label for="image" class="form-label">Upload Image</label>
-        <input type="file" id="image" class="form-control" />
+        <input type="file" id="image" formControlName="image" (change)="onFileSelected($event)" class="form-control" />
       </div>
 
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" id="title" class="form-control" placeholder="Enter title" />
+        <input type="text" id="title" formControlName="title" class="form-control" placeholder="Enter title" />
       </div>
 
       <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea id="content" class="form-control" rows="6" placeholder="Write..."></textarea>
+        <textarea id="content" formControlName="content" class="form-control" rows="6" placeholder="Write..."></textarea>
       </div>
 
       <button type="submit" class="btn  w-100">Upload Post</button>
