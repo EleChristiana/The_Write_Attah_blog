@@ -1,69 +1,17 @@
-<!-- <app-header></app-header>
-
-
-<div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <button class="btn btn-primary">Read More</button>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a short card.</p>
-         <button class="btn btn-primary">Read More</button>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-         <button class="btn btn-primary">Read More</button>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-         <button class="btn btn-primary">Read More</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
 
 
 
 <app-header></app-header>
 
-<!-- Bootstrap Alert -->
-<div *ngIf="alertMessage" class="alert alert-danger alert-dismissible fade show mx-3 mt-3" role="alert">
-  {{ alertMessage }}
-  <button type="button" class="btn-close" (click)="alertMessage = null" aria-label="Close"></button>
-</div>
-
-<!-- Cards Section -->
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mx-3">
   <div class="col" *ngFor="let card of cards">
     <div class="card h-100">
-      <img [src]="card.image" class="card-img-top" alt="...">
+      <img [src]="card.imageUrl" class="card-img-top" alt="Post image" />
       <div class="card-body">
         <h5 class="card-title">{{ card.title }}</h5>
-        <p class="card-text">{{ card.text }}</p>
+        <p class="card-text">
+          {{ card.content.length > 100 ? (card.content | slice:0:100) + '...' : card.content }}
+        </p>
         <button class="btn btn-primary">Read More</button>
       </div>
     </div>

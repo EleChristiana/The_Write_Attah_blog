@@ -3,6 +3,15 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../reuseable/header/header.component';
 import { AuthService } from '../../auth.service';
+import { collection, collectionData, Firestore, getDocs } from '@angular/fire/firestore';
+
+interface BlogPost {
+  title: string;
+  content: string;
+  imageUrl: string;
+  datePosted?: any; // optional timestamp
+}
+
 
 @Component({
   selector: 'app-home',
@@ -11,37 +20,41 @@ import { AuthService } from '../../auth.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
+
+
 export class HomeComponent {
 
-  constructor(private authService: AuthService) {
-  this.authService.alert$.subscribe(message => {
-    this.alertMessage = message;
-  });
+  cards: BlogPost[] = [];
+
+  constructor(private firestore: Firestore) {}
+
+  ngOnInit(): void {
+    const postsRef = collection(this.firestore, 'posts');
+
+    collectionData(postsRef, { idField: 'id' }).subscribe((data: any) => {
+      this.cards = data;
+    });
+  }
+
+ 
+
+  //  cards: any[] = [];
+
+  // constructor(private firestore: Firestore) {}
+
+  // async ngOnInit() {
+  //   const postsCollection = collection(this.firestore, 'posts');
+  //   const snapshot = await getDocs(postsCollection);
+
+  //   this.cards = snapshot.docs.map(doc => {
+  //     const data = doc.data();
+  //     return {
+  //       title: data['title'],
+  //       text: data['content'],
+  //       image: data['imageUrl']
+  //     };
+  //   });
+  // }
 }
 
-  alertMessage: string | null = null;
-
-  cards = [
-    {
-      image: 'https://via.placeholder.com/300x150',
-      title: 'Card Title 1',
-      text: 'This is a longer card with supporting text below...'
-    },
-    {
-      image: 'https://via.placeholder.com/300x150',
-      title: 'Card Title 2',
-      text: 'This is a short card.'
-    },
-    {
-      image: 'https://via.placeholder.com/300x150',
-      title: 'Card Title 3',
-      text: 'This is a longer card with supporting text below...'
-    },
-    {
-      image: 'https://via.placeholder.com/300x150',
-      title: 'Card Title 4',
-      text: 'This is a longer card with supporting text below...'
-    }
-  ];
-}
 
