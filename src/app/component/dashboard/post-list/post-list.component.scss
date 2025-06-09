@@ -1,0 +1,16 @@
+table {
+  font-size: 0.95rem;
+
+  th, td {
+    vertical-align: middle;
+  }
+
+  @media (max-width: 576px) {
+    td:nth-child(3) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+  }
+}

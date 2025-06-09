@@ -7,12 +7,13 @@
   <div class="col" *ngFor="let card of cards">
     <div class="card h-100">
       <img [src]="card.imageUrl" class="card-img-top" alt="Post image" />
+      <p>Posted on: {{ formatDate(card.datePosted) }}</p>
       <div class="card-body">
         <h5 class="card-title">{{ card.title }}</h5>
         <p class="card-text">
           {{ card.content.length > 100 ? (card.content | slice:0:100) + '...' : card.content }}
         </p>
-        <button class="btn btn-primary">Read More</button>
+        <button [routerLink]="['/post', card.id]" class="btn btn-primary">Read More</button>
       </div>
     </div>
   </div>

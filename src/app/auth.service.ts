@@ -1,11 +1,13 @@
 
+
+
 // import { computed, inject, Injectable, Signal } from '@angular/core';
 // import { toSignal } from '@angular/core/rxjs-interop';
 // import { Auth, GoogleAuthProvider, signInWithPopup, user, User } from '@angular/fire/auth';
 // import { Router } from '@angular/router';
 // import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 // import { BehaviorSubject } from 'rxjs';
-// import { environment } from '../enviroments/environment'; 
+// import { environment } from '../enviroments/environment';  
 // import { HttpClient } from '@angular/common/http';
 
 // @Injectable({
@@ -15,7 +17,6 @@
 //   private auth = inject(Auth);
 //   private router = inject(Router);
 //   private firestore = inject(Firestore);
-  
 
 //   private userSignal = toSignal(user(this.auth));
 //   public user: Signal<User | undefined> = computed(() => {
@@ -23,7 +24,6 @@
 //     return currentUser ?? undefined;
 //   });
 
-//   // Set role only if document doesn't exist
 //   private async setUserRoleIfNotExists(uid: string, role: string = 'user') {
 //     const userDocRef = doc(this.firestore, `users/${uid}`);
 //     const userDocSnap = await getDoc(userDocRef);
@@ -33,7 +33,6 @@
 //     }
 //   }
 
-//   // Explicitly set owner role, merges with existing data
 //   private async setOwnerRole(uid: string) {
 //     const userDocRef = doc(this.firestore, `users/${uid}`);
 //     await setDoc(userDocRef, { role: 'owner' }, { merge: true });
@@ -45,11 +44,9 @@
 //       if (result.user) {
 //         const uid = result.user.uid;
 
+//         console.log('Logged in user UID:', uid);
 
-//           console.log('Logged in user UID:', uid);
-
-//         // Replace with your blog owner's real UID
-//         if (uid ===   environment.ownerUid) {
+//         if (uid === environment.ownerUid) {
 //           await this.setOwnerRole(uid);
 //         } else {
 //           await this.setUserRoleIfNotExists(uid, 'user');
@@ -73,7 +70,6 @@
 //     }
 //   }
 
-//   // Helper to get role for guards or UI
 //   public async getUserRole(uid: string): Promise<string | null> {
 //     const userDocRef = doc(this.firestore, `users/${uid}`);
 //     const userDocSnap = await getDoc(userDocRef);
@@ -84,13 +80,11 @@
 //     return null;
 //   }
 
-
-//    private alertSubject = new BehaviorSubject<string | null>(null);
+//   private alertSubject = new BehaviorSubject<string | null>(null);
 //   alert$ = this.alertSubject.asObservable();
 
 //   showAlert(message: string) {
 //     this.alertSubject.next(message);
-//     // Clear alert after 5 seconds automatically
 //     setTimeout(() => this.clearAlert(), 5000);
 //   }
 
@@ -104,34 +98,22 @@
 
 
 
-// export class CloudinaryService {
-//   private uploadUrl = environment.cloudinaryUploadUrl;
-//   private uploadPreset = environment.cloudinaryUploadPreset;
-
-//   constructor(private http: HttpClient) {}
-
-//   uploadImage(file: File) {
-//     const formData = new FormData();
-//     formData.append('file', file);
-//     formData.append('upload_preset', this.uploadPreset);
-//     // Optionally specify folder if you want:
-//     // formData.append('folder', 'myapp');
-
-//     // Returns observable with upload response (including secure_url)
-//     return this.http.post<any>(this.uploadUrl, formData);
-//   }
-// }
-
-
-
-import { computed, inject, Injectable, Signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, effect } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Auth, GoogleAuthProvider, signInWithPopup, user, User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../enviroments/environment';  // <-- fixed path
+import { environment } from '../enviroments/environment';  
 import { HttpClient } from '@angular/common/http';
+
+export interface AppUser {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+  role: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -142,10 +124,23 @@ export class AuthService {
   private firestore = inject(Firestore);
 
   private userSignal = toSignal(user(this.auth));
-  public user: Signal<User | undefined> = computed(() => {
-    const currentUser = this.userSignal();
-    return currentUser ?? undefined;
+
+  public user: Signal<AppUser | null> = computed(() => {
+    const firebaseUser = this.userSignal();
+    if (!firebaseUser) return null;
+
+    const appUser: AppUser = {
+      uid: firebaseUser.uid,
+      displayName: firebaseUser.displayName ?? 'User',
+      email: firebaseUser.email ?? '',
+      photoURL: firebaseUser.photoURL ?? '',
+      role: 'user' // default role; you can override it with Firestore call if needed
+    };
+
+    return appUser;
   });
+
+  constructor() {}
 
   private async setUserRoleIfNotExists(uid: string, role: string = 'user') {
     const userDocRef = doc(this.firestore, `users/${uid}`);
@@ -164,20 +159,22 @@ export class AuthService {
   public async loginWithGoogle() {
     try {
       const result = await signInWithPopup(this.auth, new GoogleAuthProvider());
-      if (result.user) {
-        const uid = result.user.uid;
+      const uid = result.user?.uid;
 
-        console.log('Logged in user UID:', uid);
-
+      if (uid) {
         if (uid === environment.ownerUid) {
           await this.setOwnerRole(uid);
         } else {
-          await this.setUserRoleIfNotExists(uid, 'user');
+          await this.setUserRoleIfNotExists(uid);
         }
 
+        console.log('Logged in:', {
+          uid,
+          name: result.user.displayName,
+          photo: result.user.photoURL
+        });
+
         this.router.navigate(['/']);
-      } else {
-        console.error('Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
@@ -196,11 +193,7 @@ export class AuthService {
   public async getUserRole(uid: string): Promise<string | null> {
     const userDocRef = doc(this.firestore, `users/${uid}`);
     const userDocSnap = await getDoc(userDocRef);
-    if (userDocSnap.exists()) {
-      const data = userDocSnap.data();
-      return data['role'] ?? null;
-    }
-    return null;
+    return userDocSnap.exists() ? userDocSnap.data()['role'] ?? null : null;
   }
 
   private alertSubject = new BehaviorSubject<string | null>(null);
@@ -214,6 +207,4 @@ export class AuthService {
   clearAlert() {
     this.alertSubject.next(null);
   }
-
-  constructor() {}
 }

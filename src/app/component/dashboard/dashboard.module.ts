@@ -10,7 +10,7 @@ import { DeletePostComponent } from './delete-post/delete-post.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+     
   
    
    

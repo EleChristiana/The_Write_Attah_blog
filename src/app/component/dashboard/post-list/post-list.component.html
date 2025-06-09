@@ -1,12 +1,42 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="alert alert-danger" role="alert"> Login Failed....</div>
+<h2 class="text-center my-4 fw-bold">Blog Post List</h2>
 
-            <div class="col-12 col-lg-6">
-               <div class="alert alert-success">Login Sucessful....</div>
-            </div>
-        </div>
-    </div>
+<div class="container px-2" style=" color: white;">
+  <div class="table-responsive-sm">
+    <table class="table table-bordered table-hover align-middle text-center" style=" color: white;">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
 
+      <tbody *ngIf="posts.length > 0; else noPosts">
+        <tr *ngFor="let post of posts">
+          <td>
+            <img [src]="post.imageUrl" class="rounded" width="50" height="50" style="object-fit: cover;" />
+          </td>
+          <td class="fw-semibold text-nowrap">{{ post.title }}</td>
+          <td class="text-start">
+            {{ post.content.length > 60 ? (post.content | slice: 0:60) + '...' : post.content }}
+          </td>
+          <td>{{ formatDate(post.datePosted) }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="editPost(post.id)" title="Edit">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deletePost(post.id)" title="Delete">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noPosts>
+    <div class="alert alert-warning text-center">No blog posts found.</div>
+  </ng-template>
 </div>

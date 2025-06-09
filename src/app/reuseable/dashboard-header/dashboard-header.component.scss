@@ -1,0 +1,87 @@
+// .dashboard-header {
+//   position: fixed;
+//   top: 0;
+//   left: 220px; /* width of your sidebar */
+//   right: 0;
+//   height: 56px;
+//   background-color: #345; /* your chosen color */
+//   color: white;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 0 1rem;
+//   font-family: Arial, sans-serif;
+//   z-index: 1050; /* make sure it's above sidebar and content */
+//   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+// }
+
+// .header-left h1 {
+//   margin: 0;
+//   font-size: 1.5rem;
+// }
+
+// .header-right {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .profile {
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+//   user-select: none;
+//   position: relative;
+//   outline: none;
+// }
+
+// .profile-img {
+//   width: 36px;
+//   height: 36px;
+//   border-radius: 50%;
+//   object-fit: cover;
+//   margin-right: 0.5rem;
+//   border: 1px solid #ccc;
+// }
+
+// .profile-name {
+//   margin-right: 0.3rem;
+//   font-weight: 600;
+//   color: white;
+// }
+
+// i {
+//   font-size: 0.8rem;
+//   color: white;
+// }
+
+// .profile-menu {
+//   position: absolute;
+//   top: 100%;
+//   right: 0;
+//   background: white;
+//   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+//   border-radius: 4px;
+//   padding: 0.5rem 1rem;
+//   margin-top: 0.3rem;
+//   white-space: nowrap;
+//   z-index: 1100;
+// }
+
+// .logout-btn {
+//   background: none;
+//   border: none;
+//   color: #d9534f;
+//   font-weight: bold;
+//   cursor: pointer;
+//   padding: 0;
+// }
+
+// /* Responsive: On smaller screens, remove left margin and make header full width */
+// @media (max-width: 767px) {
+//   .dashboard-header {
+//     left: 0;
+//     padding: 0 0.5rem;
+//   }
+  
+ 
+// }

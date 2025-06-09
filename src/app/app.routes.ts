@@ -3,11 +3,14 @@ import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
 import { authGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { BlogDetailsComponent } from './component/blog-details/blog-details.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, 
 
     },
+
+      { path: 'post/:id', component: BlogDetailsComponent },
 
     {
         path: 'login', component: LoginComponent
@@ -24,5 +27,7 @@ export const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./component/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [authGuard]
-  }
+  },
+
+
 ];

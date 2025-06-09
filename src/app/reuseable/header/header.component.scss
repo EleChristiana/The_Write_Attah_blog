@@ -1,12 +1,15 @@
 .navbar{
     background-color:#1E2A38 ;
      color: white;
+     z-index: 1100;
     
     
 }
 
+
+
  .navbar .nav-link,
-  .navbar .navbar-brand,
+  .navbar,
   .navbar .btn,
   .navbar  {
     color: white !important;

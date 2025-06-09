@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
@@ -10,5 +10,13 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  sidebarActive = false;
+  
 
+  toggleSidebar() {
+    this.sidebarActive = !this.sidebarActive;
+  }
+
+
+ 
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
     component: DasboardComponent,
     children: [
       { path: 'create-post', component: CreatePostComponent },
-      { path: 'edit-post', component: EditPostComponent },
+      { path: 'edit-post/:id', component: EditPostComponent },
       {path:'delete-post', component: DeletePostComponent},
       {path:'post-list', component: PostListComponent},
       {path:'statistics', component: StatisticsComponent},

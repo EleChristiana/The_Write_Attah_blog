@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-end align-items-center p-2 text-white position-relative" style="background-color: #1E2A38;">
+  <div *ngIf="user() as user" class="d-flex align-items-center position-relative">
+    <img 
+      [src]="user.photoURL || 'user.photoURL'" 
+      alt="Profile Image" 
+      class="rounded-circle"
+      style="width: 36px; height: 36px; cursor: pointer;"
+      (click)="toggleMenu()"
+      (error)="onImgError($event)" />
+
+    <div 
+      class="dropdown-menu dropdown-menu-end show"
+      *ngIf="isMenuOpen" 
+      style="position: absolute; top: 100%; right: 0;">
+      <span class="dropdown-item-text">Welcome Brilliant Writer {{ user.displayName }}</span>
+      <button class="dropdown-item text-danger" (click)="logOut()">Logout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<div *ngIf="post; else loading" class="post-container">
+
+    <h2 class="post-title">{{ post.title }}</h2>
+
+  <div class="image-wrapper">
+    <img
+      class="post-image"
+      [src]="post.imageUrl"
+      alt="Post image"
+    />
+  </div>
+
+  <div class="text-wrapper">
+    <p class="post-content">{{ post.content }}</p>
+    <p class="post-date">Posted on: {{ formatDate(post.datePosted) }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="loading-text">Loading post...</p>
+</ng-template>
