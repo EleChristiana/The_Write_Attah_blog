@@ -4,6 +4,8 @@ import { AboutComponent } from './component/about/about.component';
 import { authGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { BlogDetailsComponent } from './component/blog-details/blog-details.component';
+import { BlogComponent } from './component/blog/blog.component';
+import { ContactComponent } from './component/contact/contact.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent, 
@@ -19,6 +21,15 @@ export const routes: Routes = [
     {path: 'about', component: AboutComponent
 
     },
+
+ {path: 'blog', component: BlogComponent
+
+    },
+
+    {path: 'contact', component: ContactComponent
+
+    },
+
 
 
 

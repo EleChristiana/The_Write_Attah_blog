@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 
 <div *ngIf="post; else loading" class="post-container">
 
@@ -16,6 +16,81 @@
     <p class="post-content">{{ post.content }}</p>
     <p class="post-date">Posted on: {{ formatDate(post.datePosted) }}</p>
   </div>
+</div>
+
+<ng-template #loading>
+  <p class="loading-text">Loading post...</p>
+</ng-template> 
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<app-header></app-header>
+
+<!-- Show post if loaded, else show loading -->
+<div *ngIf="post; else loading" class="post-container">
+  <h2 class="post-title">{{ post.title }}</h2>
+
+  <div class="image-wrapper">
+    <img [src]="post.imageUrl" alt="Post image" class="post-image" />
+  </div>
+
+  <div class="text-wrapper">
+    <p class="post-content">{{ post.content }}</p>
+    <p class="post-date">Posted on: {{ formatDate(post.datePosted) }}</p>
+  </div>
+
+  <!-- Like and Share Buttons -->
+  <div class="interaction-buttons">
+    <button (click)="likePost()">👍 Like ({{ post.likes || 0 }})</button>
+    <button (click)="sharePost()">🔗 Share</button>
+  </div>
+
+  
+  <ng-container *ngIf="post">
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <div *ngFor="let comment of post.comments" class="comment-box">
+        <p><strong>{{ comment.userName }}</strong> <small>({{ formatDate(comment.timestamp) }})</small></p>
+        <p>{{ comment.text }}</p>
+        <button *ngIf="isOwner(comment)" (click)="editComment(comment)">Edit</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noComments>
+    <p>No comments yet. Be the first to comment!</p>
+  </ng-template>
+
+ 
+  <div class="comment-box" *ngIf="user; else loginMsg">
+    <textarea [(ngModel)]="newComment" placeholder="Write your comment here..."></textarea>
+    <button (click)="addComment()">Post Comment</button>
+  </div>
+
+  <ng-template #loginMsg>
+    <p>Please <a routerLink="/login">log in</a> to add a comment.</p>
+  </ng-template>
 </div>
 
 <ng-template #loading>

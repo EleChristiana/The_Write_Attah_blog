@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect } from '@angular/core';
+import { Component, computed, effect, OnInit, Renderer2 } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../auth.service';
 
@@ -8,21 +8,22 @@ import { AuthService } from '../../auth.service';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']  // fix typo: styleUrls (plural)
+  styleUrls: ['./header.component.scss']  
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   isOwner = false;
   alertMessage: string | null = null;
+    themeIcon: string = 'fa fa-moon';
  
-  constructor(private authService: AuthService, private router: Router) {
-    // Subscribe to alerts
+  constructor(private authService: AuthService, private router: Router, private renderer: Renderer2) {
+    
     this.authService.alert$.subscribe(message => {
       this.alertMessage = message;
     });
 
-    // Reactively watch user signal for uid changes
+    
     effect(() => {
-      const user = this.authService.user();  // Call the signal as a function
+      const user = this.authService.user();  
 
       if (user?.uid) {
         this.authService.getUserRole(user.uid).then(role => {
@@ -33,15 +34,32 @@ export class HeaderComponent {
       }
     });
   }
+  ngOnInit(): void {
+      this.renderer.addClass(document.body, 'light-theme');
+  }
 
    handleDashboardClick(event: Event) {
     if (!this.isOwner) {
-      event.preventDefault(); // stop navigation
-      // this.authService.showAlert();
+      event.preventDefault();  
     } else {
-      // owner allowed to navigate
-      event.preventDefault(); // prevent default anchor behavior
+      
+      event.preventDefault(); 
       this.router.navigate(['/dashboard/create-post']);
+    }
+  }
+
+
+   toggleTheme(): void {
+    const isLight = document.body.classList.contains('light-theme');
+
+    if (isLight) {
+      this.renderer.removeClass(document.body, 'light-theme');
+      this.renderer.addClass(document.body, 'dark-theme');
+      this.themeIcon = 'fa fa-sun';
+    } else {
+      this.renderer.removeClass(document.body, 'dark-theme');
+      this.renderer.addClass(document.body, 'light-theme');
+      this.themeIcon = 'fa fa-moon';
     }
   }
 }

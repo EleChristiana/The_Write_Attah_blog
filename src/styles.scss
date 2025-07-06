@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/* Global theme styles */
+body.light-theme {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Optional: button styles */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+
+body.dark-theme .theme-toggle-btn i {
+  color: white;
+}
+
+body.light-theme .theme-toggle-btn i {
+  color: black;
+}
