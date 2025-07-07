@@ -1,3 +1,8 @@
+  .header-text{
+    color: #9aafff; 
+  }
+
+
 .card {
   width: 100%;
   max-width: 350px;
@@ -16,6 +21,8 @@
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(30, 42, 56, 0.9);
   }
+
+
 
   .card-img-top {
     width: 100%;
@@ -49,7 +56,7 @@
       font-weight: 700;
       font-size: 1.4rem;
       margin-bottom: 0.6rem;
-      color: #9aafff; /* lighter accent */
+      color: #9aafff; 
       letter-spacing: 1px;
     }
 
