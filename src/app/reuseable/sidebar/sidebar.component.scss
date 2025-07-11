@@ -103,5 +103,37 @@
 
 
 
+ body.light-theme {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+
+.back-arrow {
+  text-decoration: none;
+  color: #ffffff; 
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 1rem;
+}
+
+.back-arrow:hover {
+     background-color: #32475a;
+     padding: 0.5em;
+}
 
 

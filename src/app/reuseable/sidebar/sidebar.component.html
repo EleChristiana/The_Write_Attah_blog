@@ -5,9 +5,13 @@
 
 <div class="layout">
   <div class="sidebar" [class.active]="sidebarActive">
-    <h1 [routerLink] ="['/']" class="logo" style="color:#6c63ff; cursor:pointer">The_Write_Attah</h1>
+   
+    
    
     <nav class="nav-links">
+     <a [routerLink]="['/']" class="back-arrow">
+  <i class="bi bi-arrow-left"></i> Back To Home
+</a>
       <a class="nav-link" [routerLink]="['/dashboard/create-post']">
         <i class="bi bi-plus-circle me-2"></i> Create Post
       </a>
@@ -20,8 +24,21 @@
       <a class="nav-link" [routerLink]="['/dashboard/statistics']">
         <i class="bi bi-bar-chart-line me-2"></i> Statistics
       </a>
+
+          <button (click)="toggleTheme()" class="theme-toggle-btn">
+  <i [ngClass]="themeIcon" style="color: white; display: flex; justify-content: start; align-items: start;">Toggle</i> 
+</button>
+
     </nav>
+
+           <div>
+   
+</div>
+   
   </div>
+
+  
+   
 
  
   <button class="sidebar-toggle" (click)="toggleSidebar()">
