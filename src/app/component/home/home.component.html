@@ -11,7 +11,64 @@
              <h4 class=" mb-2"> Writer | Editor | Graphic Designer </h4>
                 <p>Ojonugwa John Attah, known professionally as The Write Attah, is a Nigerian poet, short story writer, book enthusiast, street and nature phone photographer, graphic designer, and English-language teacher. A graduate of English and Literary Studies from the University of Nigeria, Nsukka, he has published poems, essays, and stories in Best New African Poets 2015 Anthology, Brittle Paper, Medium, and other notable platforms across Africa and beyond. </p>
             </div>
+
+
+         
+<div class="text-center mt-4">
+  <button class="btn btn-primary me-2" (click)="togglePreview()">Preview CV</button>
+  <a
+    [href]="pdfDownloadUrl"
+    download="ojonugwa-john-attah-cv.pdf"
+    class="btn btn-primary"
+  >
+    📥 Download CV
+  </a>
+</div>
+
+
+<div
+  *ngIf="showPreview"
+  class="cv-preview-overlay d-flex justify-content-center align-items-center"
+>
+  <div class="cv-preview-box p-3">
+    <button class="btn btn-danger mb-2" (click)="togglePreview()">❌ Close Preview</button>
+    <iframe
+      [src]="pdfUrl"
+      width="100%"
+      height="500px"
+      style="border: 1px solid #ccc; border-radius: 8px;"
+    ></iframe>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- PDF Preview Modal (Mobile & Desktop Compatible) -->
+<!-- <div
+  *ngIf="showPreview"
+  class="cv-preview-overlay d-flex justify-content-center align-items-center"
+>
+  <div class="cv-preview-box p-3">
+    <button class="btn btn-danger mb-2" (click)="togglePreview()">❌ Close Preview</button>
+
+    <pdf-viewer
+      [src]="pdfDownloadUrl"
+      [render-text]="true"
+      style="display: block;"
+      [original-size]="false"
+      [fit-to-page]="true"
+      [show-all]="true"
+      [zoom]="1"
+    ></pdf-viewer>
+  </div>
+</div> -->
+
         </div>
 
     </div>
 </section>
+
+<app-footer></app-footer>

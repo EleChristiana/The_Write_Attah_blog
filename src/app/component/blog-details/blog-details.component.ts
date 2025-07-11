@@ -69,11 +69,12 @@ import { Timestamp } from '@angular/fire/firestore';
 import { HeaderComponent } from '../../reuseable/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { FooterComponent } from '../../reuseable/footer/footer.component';
 
 @Component({
   selector: 'app-blog-details',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FormsModule],
+  imports: [CommonModule, RouterModule, HeaderComponent, FormsModule, FooterComponent],
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.scss']
 })

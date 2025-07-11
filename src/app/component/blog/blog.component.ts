@@ -4,6 +4,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../reuseable/header/header.component';
 import { collection, collectionData, Firestore, Timestamp } from '@angular/fire/firestore';
 import { BlogdetailsService } from '../../blogdetails.service';
+import { FooterComponent } from '../../reuseable/footer/footer.component';
 
 interface BlogPost {
     id?: string; // ID from Firestore (optional if you want to avoid strict checks)
@@ -17,7 +18,7 @@ interface BlogPost {
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterModule, HeaderComponent],
+  imports: [CommonModule, RouterLink, RouterModule, HeaderComponent, FooterComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss'
 })

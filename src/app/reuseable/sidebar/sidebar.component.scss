@@ -1,11 +1,4 @@
 
-
-
-
-
-
-
-
 .layout {
   display: flex;
   
@@ -28,7 +21,7 @@
      
     }
 
-    // Hidden offscreen by default on small screens
+    
     transform: translateX(-100%);
     
 
@@ -135,5 +128,9 @@ body.dark-theme {
      background-color: #32475a;
      padding: 0.5em;
 }
+
+
+
+
 
 

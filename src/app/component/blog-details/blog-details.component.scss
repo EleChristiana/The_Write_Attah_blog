@@ -1,20 +1,17 @@
-body{
-     background-color: #F4F6F9;
-}
 
 .post-container {
   max-width: 900px;
   margin: 3rem auto;
   padding: 0 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+ 
 }
 
 .post-title {
   font-weight: 700;
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 1.5rem;
-  color: #2c3e50;
+ 
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1.3px;
@@ -45,7 +42,7 @@ body{
 .text-wrapper {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.7;
-  color: #444;
+ 
 
   p {
     margin-bottom: 1.25rem;
@@ -81,3 +78,16 @@ body{
     font-size: 2rem;
   }
 }
+
+
+
+ body.light-theme {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+}
+
