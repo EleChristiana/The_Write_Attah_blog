@@ -1,6 +1,66 @@
+
+
 <app-header></app-header>
 
-<p>Contact works!</p>
+<div id="page-content"
+  style="
+    background: url('assets/images/backgroundimage.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 60px 20px;
+    min-height: 100vh;
+  "
+>
+  <div
+    style="
+      max-width: 600px;
+      margin: auto;
+    
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    "
+  >
+    <h2 style="text-align: center; color: #444;">Contact Me</h2>
 
+    <form action="https://formspree.io/f/xeozjavl" method="POST">
+      <label style="display: block; margin-bottom: 15px;">
+        Your Full Name:
+        <input
+          type="text"
+          name="name"
+          required
+          style="width: 100%; padding: 12px; margin-top: 6px; border-radius: 10px; border: 1px solid #ccc;"
+        />
+      </label>
+
+      <label style="display: block; margin-bottom: 15px;">
+        Your Email:
+        <input
+          type="email"
+          name="email"
+          required
+          style="width: 100%; padding: 12px; margin-top: 6px; border-radius: 10px; border: 1px solid #ccc;"
+        />
+      </label>
+
+      <label style="display: block; margin-bottom: 15px;">
+        Your Message:
+        <textarea
+          name="message"
+          rows="5"
+          required
+          style="width: 100%; padding: 12px; margin-top: 6px; border-radius: 10px; border: 1px solid #ccc;"
+        ></textarea>
+      </label>
+
+      <button
+        type="submit"
+        style="width: 100%; padding: 14px; background-color: #6c63ff; color: white; font-weight: bold; border: none; border-radius: 10px; cursor: pointer;"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
 
 <app-footer></app-footer>
