@@ -49,3 +49,7 @@ src/environments/environment.ts
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+
+#vercel
+.vercel
