@@ -42,8 +42,7 @@ testem.log
 Thumbs.db
 
 # Ignore production environment file (contains sensitive info)
-src/environments/environment.prod.ts
-src/environments/environment.ts
+
 
 # Firebase
 .firebase
