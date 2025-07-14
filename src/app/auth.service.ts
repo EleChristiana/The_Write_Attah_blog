@@ -4,7 +4,7 @@ import { Auth, GoogleAuthProvider, signInWithPopup, user, User } from '@angular/
 import { Router } from '@angular/router';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../enviroments/environment';  
+import { environment } from '../environments/environment';  
 
 
 @Injectable({

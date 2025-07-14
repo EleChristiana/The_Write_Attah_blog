@@ -47,7 +47,7 @@
 
 <app-header></app-header>
 
-<!-- Show post if loaded, else show loading -->
+
 <div *ngIf="post; else loading" class="post-container">
   <h2 class="post-title">{{ post.title }}</h2>
 
@@ -60,7 +60,7 @@
     <p class="post-date">Posted on: {{ formatDate(post.datePosted) }}</p>
   </div>
 
-  <!-- Like and Share Buttons -->
+ 
   <div class="interaction-buttons">
     <button (click)="likePost()">👍 Like ({{ post.likes || 0 }})</button>
     <button (click)="sharePost()">🔗 Share</button>
