@@ -62,7 +62,7 @@ The-Write-Attah/
 🛡️ Authentication and Roles
 Only the blog owner (identified via ownerUid) can create, edit, or delete posts.
 
-Visitors must log in with Google to comment, like, or manage their own comments.
+Visitors must log in with Google to comment, like, or manage their own comments. Though the like and comment feature is still under development.
 
 📬 Contact
 Portfolio Website: https://the-write-attah.vercel.app
