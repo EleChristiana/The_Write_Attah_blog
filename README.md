@@ -1,27 +1,74 @@
-# TheWriteAttah
+# ✍️ The-Write-Attah
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+**The-Write-Attah** is a personal blog and portfolio website built for **Ojonugwa John Attah** — a creative writer, storyteller, and digital enthusiast. The platform showcases his published works and allows readers to engage through blog content, comments, and more.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🌍 Live Website
 
-## Code scaffolding
+🔗 [https://the-write-attah.vercel.app](https://the-write-attah.vercel.app)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ✨ Features
 
-## Running unit tests
+### 👤 Portfolio & Personal Brand
+- **CV Preview**: Visitors can preview and download the blog owner's CV.
+- **Project Showcase**: Displays writing samples, creative projects, and personal achievements.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 📝 Blog Management
+- **Create Posts**: Authenticated blog owner can write and publish new blog articles.
+- **Edit/Delete Posts**: Owner can modify or delete any blog post.
+- **Rich Content**: Each post supports titles, images, descriptions, and full text.
 
-## Running end-to-end tests
+### 👥 Reader Interaction
+- **Read Blog Posts**: All visitors can access published content.
+- **Comment System**: Logged-in users can post, edit, and delete comments.
+- **Like Posts**: Readers can like articles to show appreciation.
+- **Google Authentication**: Secure sign-in for users via Google.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 📱 Responsive Design
+- Fully mobile-friendly and works across all screen sizes.
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🔧 Tech Stack
+
+- **Frontend**: Angular 18, TypeScript, HTML5, SCSS
+- **Authentication**: Firebase Google Auth
+- **Database**: Firebase Firestore (for blog data and comments)
+- **Storage**: Cloudinary (for image uploads)
+- **Hosting**: Vercel
+
+---
+
+## 📁 Folder Structure
+
+The-Write-Attah/
+├── src/
+│ ├── app/
+│ │ ├── components/
+│ │ ├── services/
+│ │ 
+│ ├── assets/
+│ ├── environments/
+│ └── index.html
+├── angular.json
+├── package.json
+├── vercel.json
+└── README.md
+
+
+🛡️ Authentication and Roles
+Only the blog owner (identified via ownerUid) can create, edit, or delete posts.
+
+Visitors must log in with Google to comment, like, or manage their own comments.
+
+📬 Contact
+Portfolio Website: https://the-write-attah.vercel.app
+
+Email: attahwrites@example.com
+
+📄 License
+This project is for personal and professional branding purposes.
+All rights reserved © Ojonugwa John Attah.
