@@ -45,11 +45,11 @@ export class CreatePostComponent implements OnInit {
     this.uploading = true;
 
     try {
-      // Upload to Cloudinary
+     
       const response = await this.cloudinaryService.uploadImage(this.selectedFile).toPromise();
       const imageUrl = response.secure_url;
 
-      // Save post to Firestore
+     
       const post = {
         title: this.createPost.value.title,
         content: this.createPost.value.content,

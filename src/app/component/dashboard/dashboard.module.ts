@@ -6,7 +6,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { SidebarComponent } from '../../reuseable/sidebar/sidebar.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { DeletePostComponent } from './delete-post/delete-post.component';
+
 import { StatisticsComponent } from './statistics/statistics.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ import {  HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [CreatePostComponent, EditPostComponent, PostListComponent, DeletePostComponent, StatisticsComponent],
+  declarations: [CreatePostComponent, EditPostComponent, PostListComponent, StatisticsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

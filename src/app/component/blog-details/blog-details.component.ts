@@ -110,7 +110,7 @@ export class BlogDetailsComponent implements OnInit {
         if (post) {
         this.post = {
   ...post,
-  comments: post.comments ?? [], // ensures comments is never undefined
+  comments: post.comments ?? [], 
   likes: post.likes || 0,
   likedBy: post.likedBy || []
 };
