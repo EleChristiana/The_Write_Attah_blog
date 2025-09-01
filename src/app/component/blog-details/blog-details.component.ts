@@ -148,21 +148,21 @@ export class BlogDetailsComponent implements OnInit {
     }
   }
 
-  addComment(): void {
-    if (!this.newComment.trim() || !this.user) return;
+  // addComment(): void {
+  //   if (!this.newComment.trim() || !this.user) return;
 
-    const comment: BlogComment = {
-      text: this.newComment.trim(),
-      userId: this.user.uid,
-      userName: this.user.displayName || this.user.email,
-      timestamp: new Date()
-    };
+  //   const comment: BlogComment = {
+  //     text: this.newComment.trim(),
+  //     userId: this.user.uid,
+  //     userName: this.user.displayName || this.user.email,
+  //     timestamp: new Date()
+  //   };
 
-    this.blogService.addComment(this.postId, comment).then(() => {
-      this.post?.comments?.push(comment);
-      this.newComment = '';
-    });
-  }
+  //   this.blogService.addComment(this.postId, comment).then(() => {
+  //     this.post?.comments?.push(comment);
+  //     this.newComment = '';
+  //   });
+  // }
 
   editComment(comment: BlogComment): void {
     const updatedText = prompt('Edit your comment:', comment.text);

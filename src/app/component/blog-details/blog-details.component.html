@@ -61,15 +61,15 @@
   </div>
 
  
-  <div class="interaction-buttons">
+  <!-- <div class="interaction-buttons">
     <button (click)="likePost()">👍 Like ({{ post.likes || 0 }})</button>
     <button (click)="sharePost()">🔗 Share</button>
   </div>
 
-  
+   -->
   <ng-container *ngIf="post">
     <div class="comments-section">
-      <h3>Comments</h3>
+      
       <div *ngFor="let comment of post.comments" class="comment-box">
         <p><strong>{{ comment.userName }}</strong> <small>({{ formatDate(comment.timestamp) }})</small></p>
         <p>{{ comment.text }}</p>
@@ -83,14 +83,14 @@
   </ng-template>
 
  
-  <div class="comment-box" *ngIf="user; else loginMsg">
+  <!-- <div class="comment-box" *ngIf="user; else loginMsg">
     <textarea [(ngModel)]="newComment" placeholder="Write your comment here..."></textarea>
     <button (click)="addComment()">Post Comment</button>
-  </div>
+  </div> -->
 
-  <ng-template #loginMsg>
+  <!-- <ng-template #loginMsg>
     <p>Please <a routerLink="/login">log in</a> to add a comment.</p>
-  </ng-template>
+  </ng-template> -->
 </div>
 
 <ng-template #loading>
